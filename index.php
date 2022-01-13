@@ -1,3 +1,19 @@
+<?php
+include_once(__DIR__ . '/process/db.php');
+
+$sql = "SELECT * FROM khachsan";
+$result = $conn->query($sql);
+
+$hotels = [];
+
+if ($result->num_rows > 0) {
+  while ($row = $result->fetch_assoc()) {
+    $hotels[] = $row;
+  }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -78,233 +94,33 @@
         </div>
 
       </div>
-     
-
-
-
+    
       <!-- tìm kiếm -->
-
-
-
-
       <h5 class="mt-5 mb-3">Chỗ nghỉ nổi bật</h5>
-
       <div class="row">
-        <div class="content_item col-grid-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="card">
-            <div class="img_item pe-3">
-               <a href="./hotel_detail.php"> 
-              <img src="./img/hampton_inn.jpg" alt="...">
-            </a>  
-            </div>
-                
-            <div class="card-body">
-              <b class="card_titler">HAMPTON INN UTICA NY</b>
-              <form action="">
-                <i class="fas fa-map-marker-alt"></i>
-                
-                  <a href="https://www.google.com/maps/place/172-180+N+Genesee+St,+Utica,+NY+13502,+Hoa+K%E1%BB%B3/@43.10939,-75.2193966,17z/data=!3m1!4b1!4m5!3m4!1s0x89d94713de3c298d:0x4bf524ca0cc367ca!8m2!3d43.1093114!4d-75.2170935">
-                    172-180 N Genesee St, Utica, NY 13502, Hoa Kỳ</a>
-               
-                
-              </form>
-              <h7 class="card-text">Giá mỗi đêm</h7>
-              <h6 style="color: red;">3.215.711 ₫ </h6>
+        <a href="/hotel_detail.php?code=<?=$hotel['makhachsan'] ?>">
+          <?php foreach ($hotels as $hotel) : ?>
+          <div class="content_item col-grid-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card">
+              <div class="img_item pe-3">
+                <img src="<?= $hotel['anh'] ?>" alt="No photo">  
+              </div>   
+              <div class="card-body">
+                <b class="card_titler"><?= $hotel['tenkhachsan'] ?></b>
+                <form action="">
+                  <i class="fas fa-map-marker-alt"></i>
+                    <?= $hotel['diachi'] ?></a>
+                </form>
+                <h7 class="card-text">Giá mỗi đêm</h7>
+                <h6 style="color: red;"><?= $hotel['gia'] ?> VND</h6>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="content_item col-grid-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="card">
-            <img src="./img/EXTENDED.jpg" alt="...">
-            <div class="card-body">
-              <b class="card_titler">EXTENDED STAY AMERICA SYRACUSE</b>
-              <form action="">
-                <i class="fas fa-map-marker-alt"></i>
-                <a
-                  href="https://www.google.com/maps/place/172-180+N+Genesee+St,+Utica,+NY+13502,+Hoa+K%E1%BB%B3/@43.10939,-75.2193966,17z/data=!3m1!4b1!4m5!3m4!1s0x89d94713de3c298d:0x4bf524ca0cc367ca!8m2!3d43.1093114!4d-75.2170935">172-180
-                  N Genesee St, Utica, NY 13502, Hoa Kỳ</a>
-              </form>
-              <h7 class="card-text">Giá mỗi đêm</h7>
-              <h6 style="color: red;">5.445.764 ₫ </h6>
-            </div>
-          </div>
-        </div>
-        <div class="content_item col-grid-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="card">
-            <img src="./img/FAIRFIELD.jpg" alt="...">
-            <div class="card-body">
-              <b class="card_titler">FAIRFIELD INN N STES MARRIOTT</b>
-              <form action="">
-                <i class="fas fa-map-marker-alt"></i>
-                <a
-                  href="https://www.google.com/maps/place/172-180+N+Genesee+St,+Utica,+NY+13502,+Hoa+K%E1%BB%B3/@43.10939,-75.2193966,17z/data=!3m1!4b1!4m5!3m4!1s0x89d94713de3c298d:0x4bf524ca0cc367ca!8m2!3d43.1093114!4d-75.2170935">172-180
-                  N Genesee St, Utica, NY 13502, Hoa Kỳ</a>
-              </form>
-              <h7 class="card-text">Giá mỗi đêm</h7>
-              <h6 style="color: red;">3.462.505 ₫ </h6>
-            </div>
-          </div>
-        </div>
-        <div class="content_item col-grid-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="card">
-            <img src="./img/SOFITELjpg.jpg" alt="...">
-            <div class="card-body">
-              <b class="card_titler">SOFITEL SAIGON PLAZA</b>
-              <form action="">
-                <i class="fas fa-map-marker-alt"></i>
-                <a
-                  href="https://www.google.com/maps/place/172-180+N+Genesee+St,+Utica,+NY+13502,+Hoa+K%E1%BB%B3/@43.10939,-75.2193966,17z/data=!3m1!4b1!4m5!3m4!1s0x89d94713de3c298d:0x4bf524ca0cc367ca!8m2!3d43.1093114!4d-75.2170935">172-180
-                  N Genesee St, Utica, NY 13502, Hoa Kỳ</a>
-              </form>
-              <h7 class="card-text">Giá mỗi đêm</h7>
-              <h6 style="color: red;">1.920.000 ₫ </h6>
-            </div>
-          </div>
-        </div>
-
-
-
+          <?php endforeach ?>
+        </a>
       </div>
-      <div class="row">
-        <div class="content_item col-grid-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="card">
-            <img src="./img/ARTS-SAIGONjpg.jpg" alt="...">
-            <div class="card-body">
-              <b class="card_titler">HOTEL DES ARTS SAIGON</b>
-              <form action="">
-                <i class="fas fa-map-marker-alt"></i>
-                <a
-                  href="https://www.google.com/maps/place/172-180+N+Genesee+St,+Utica,+NY+13502,+Hoa+K%E1%BB%B3/@43.10939,-75.2193966,17z/data=!3m1!4b1!4m5!3m4!1s0x89d94713de3c298d:0x4bf524ca0cc367ca!8m2!3d43.1093114!4d-75.2170935">172-180
-                  N Genesee St, Utica, NY 13502, Hoa Kỳ</a>
-              </form>
-              <h7 class="card-text">Giá mỗi đêm</h7>
-              <h6 style="color: red;">2.090.000 ₫ </h6>
-            </div>
-          </div>
-        </div>
-        <div class="content_item col-grid-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="card">
-            <img src="./img/SILVERLAND-SPA.jpg" alt="...">
-            <div class="card-body">
-              <b class="card_titler">SILVERLAND JOLIE HOTEL AND SPA</b>
-              <form action="">
-                <i class="fas fa-map-marker-alt"></i>
-                <a
-                  href="https://www.google.com/maps/place/172-180+N+Genesee+St,+Utica,+NY+13502,+Hoa+K%E1%BB%B3/@43.10939,-75.2193966,17z/data=!3m1!4b1!4m5!3m4!1s0x89d94713de3c298d:0x4bf524ca0cc367ca!8m2!3d43.1093114!4d-75.2170935">172-180
-                  N Genesee St, Utica, NY 13502, Hoa Kỳ</a>
-              </form>
-              <h7 class="card-text">Giá mỗi đêm</h7>
-              <h6 style="color: red;">840.431 ₫ </h6>
-            </div>
-          </div>
-        </div>
-        <div class="content_item col-grid-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="card">
-            <img src="./img/WINDSOR-PLAZA.jpg" alt="...">
-            <div class="card-body">
-              <b class="card_titler">WINDSOR PLAZA HOTEL CON</b>
-              <form action="">
-                <i class="fas fa-map-marker-alt"></i>
-                <a
-                  href="https://www.google.com/maps/place/172-180+N+Genesee+St,+Utica,+NY+13502,+Hoa+K%E1%BB%B3/@43.10939,-75.2193966,17z/data=!3m1!4b1!4m5!3m4!1s0x89d94713de3c298d:0x4bf524ca0cc367ca!8m2!3d43.1093114!4d-75.2170935">172-180
-                  N Genesee St, Utica, NY 13502, Hoa Kỳ</a>
-              </form>
-              <h7 class="card-text">Giá mỗi đêm</h7>
-              <h6 style="color: red;">1.993.119 ₫ </h6>
-            </div>
-          </div>
-        </div>
-        <div class="content_item col-grid-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="card">
-            <img src="./img/SHERWOOD-RESIDENCE.jpg" alt="...">
-            <div class="card-body">
-              <b class="card_titler">SHERWOOD RESIDENCE</b>
-              <form action="">
-                <i class="fas fa-map-marker-alt"></i>
-                <a
-                  href="https://www.google.com/maps/place/172-180+N+Genesee+St,+Utica,+NY+13502,+Hoa+K%E1%BB%B3/@43.10939,-75.2193966,17z/data=!3m1!4b1!4m5!3m4!1s0x89d94713de3c298d:0x4bf524ca0cc367ca!8m2!3d43.1093114!4d-75.2170935">172-180
-                  N Genesee St, Utica, NY 13502, Hoa Kỳ</a>
-              </form>
-              <h7 class="card-text">Giá mỗi đêm</h7>
-              <h6 style="color: red;">2.714.971 ₫ </h6>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="content_item col-grid-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="card">
-            <img src="./img/hampton_inn.jpg" alt="...">
-            <div class="card-body">
-              <b class="card_titler">HAMPTON INN UTICA NY</b>
-              <form action="">
-                <i class="fas fa-map-marker-alt"></i>
-                <a
-                  href="https://www.google.com/maps/place/172-180+N+Genesee+St,+Utica,+NY+13502,+Hoa+K%E1%BB%B3/@43.10939,-75.2193966,17z/data=!3m1!4b1!4m5!3m4!1s0x89d94713de3c298d:0x4bf524ca0cc367ca!8m2!3d43.1093114!4d-75.2170935">172-180
-                  N Genesee St, Utica, NY 13502, Hoa Kỳ</a>
-              </form>
-              <h7 class="card-text">Giá mỗi đêm</h7>
-              <h6 style="color: red;">3.215.711 ₫ </h6>
-            </div>
-          </div>
-        </div>
-        <div class="content_item col-grid-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="card">
-            <img src="./img/hampton_inn.jpg" alt="...">
-            <div class="card-body">
-              <b class="card_titler">HAMPTON INN UTICA NY</b>
-              <form action="">
-                <i class="fas fa-map-marker-alt"></i>
-                <a
-                  href="https://www.google.com/maps/place/172-180+N+Genesee+St,+Utica,+NY+13502,+Hoa+K%E1%BB%B3/@43.10939,-75.2193966,17z/data=!3m1!4b1!4m5!3m4!1s0x89d94713de3c298d:0x4bf524ca0cc367ca!8m2!3d43.1093114!4d-75.2170935">172-180
-                  N Genesee St, Utica, NY 13502, Hoa Kỳ</a>
-              </form>
-              <h7 class="card-text">Giá mỗi đêm</h7>
-              <h6 style="color: red;">3.215.711 ₫ </h6>
-            </div>
-          </div>
-        </div>
-        <div class="content_item col-grid-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="card">
-            <img src="./img/hampton_inn.jpg" alt="...">
-            <div class="card-body">
-              <b class="card_titler">HAMPTON INN UTICA NY</b>
-              <form action="">
-                <i class="fas fa-map-marker-alt"></i>
-                <a
-                  href="https://www.google.com/maps/place/172-180+N+Genesee+St,+Utica,+NY+13502,+Hoa+K%E1%BB%B3/@43.10939,-75.2193966,17z/data=!3m1!4b1!4m5!3m4!1s0x89d94713de3c298d:0x4bf524ca0cc367ca!8m2!3d43.1093114!4d-75.2170935">172-180
-                  N Genesee St, Utica, NY 13502, Hoa Kỳ</a>
-              </form>
-              <h7 class="card-text">Giá mỗi đêm</h7>
-              <h6 style="color: red;">3.215.711 ₫ </h6>
-            </div>
-          </div>
-        </div>
-        <div class="content_item col-grid-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="card">
-            <img src="./img/hampton_inn.jpg" alt="...">
-            <div class="card-body">
-              <b class="card_titler">HAMPTON INN UTICA NY</b>
-              <form action="">
-                <i class="fas fa-map-marker-alt"></i>
-                <a
-                  href="https://www.google.com/maps/place/172-180+N+Genesee+St,+Utica,+NY+13502,+Hoa+K%E1%BB%B3/@43.10939,-75.2193966,17z/data=!3m1!4b1!4m5!3m4!1s0x89d94713de3c298d:0x4bf524ca0cc367ca!8m2!3d43.1093114!4d-75.2170935">172-180
-                  N Genesee St, Utica, NY 13502, Hoa Kỳ</a>
-              </form>
-              <h7 class="card-text">Giá mỗi đêm</h7>
-              <h6 style="color: red;">3.215.711 ₫ </h6>
-            </div>
-          </div>
-        </div>
-
-
-      </div>
-
-
     </div>
-
   </main>
-
 
   <div class="container-sm">
     <div class="row">

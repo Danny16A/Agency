@@ -1,3 +1,18 @@
+<?php
+include_once(__DIR__ . '/process/db.php');
+
+$sql = "SELECT * FROM khachsan";
+$result = $conn->query($sql);
+
+$hotel = null;
+
+if ($result->num_rows > 0) {
+  $hotel = $result->fetch_assoc();
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,8 +97,8 @@
           </div>
         </div>
         <div class="right col-sm-9 mt-9">
-          <h1>HAMPTON INN UTICA</h1>
-          <h9 style="color: #3d91d6;">172 - 180 North Genesee Str. Utica NY 13502. US.</h6>
+          <h1><?=$hotel['tenkhachsan'] ?></h1>
+          <h9 style="color: #3d91d6;"><?=$hotel['diachi'] ?></h6>
             <button>
               xem trên bản đồ
             </button>
